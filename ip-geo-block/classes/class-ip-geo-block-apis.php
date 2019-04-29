@@ -398,6 +398,35 @@ class IP_Geo_Block_API_ipstack extends IP_Geo_Block_API {
 		)
 	);
 }
+/**
+ * Class for IPFINDER.io
+ *
+ * URL         : https://ipfinder.io
+ * Term of use : https://ipfinder.io/terms
+ * Licence fee : free to use the API
+ * Rate limit  : none
+ * Sample URL  : https://api.ipfinder.io/v1/2a00:1210:fffe:200::1?token-free
+ * Sample URL  : https://api.ipfinder.io/2a00:1210:fffe:200::1
+ * Input type  : IP address (IPv4, IPv6 with limited coverage)
+ * Output type : json, xml
+ */
+class IP_Geo_Block_API_IPFINDERio extends IP_Geo_Block_API {
+	protected $template = array(
+		'type' => IP_GEO_BLOCK_API_TYPE_BOTH,
+		'url' => 'https://api.ipfinder.io/v1/%API_IP%?token=%API_KEY%&format=%API_FORMAT%',
+		'api' => array(
+			'%API_FORMAT%' => 'json',
+		),
+		'transform' => array(
+			'countryCode' => 'country_code',
+			'countryName' => 'country_name',
+			'regionName'  => 'region_name',
+			'cityName'    => 'city',
+			'latitude'    => 'latitude',
+			'longitude'   => 'longitude',
+		)
+	);
+}
 
 /**
  * Class for IPInfoDB
